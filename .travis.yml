@@ -1,57 +1,67 @@
 language: bash
 env: >-
    SHASUM="shasum -a 256"
-install:
-    - HOMEBREW_NO_AUTO_UPDATE=1 brew install python3 coreutils
-    - pip3 install pyzmq
+
 before_script:
-    - git clone https://github.com/bitcoin/bitcoin.git --depth 1
-    - cd bitcoin
-    - export SRCDIR=$(pwd)
-    - echo $SRCDIR
-    - cd ../
-    - python3 ./download_latest_nightly.py
-    - cat ./src_dir.txt
-    - cat ./build_dir.txt
-    - export BUILDDIR=$(tail -1 ./build_dir.txt)
-    - echo $BUILDDIR
-script:
-    - ${BUILDDIR}/src/test_bitcoin
-    - ${SRCDIR}/test/util/bitcoin-util-test.py -v
-    - ${SRCDIR}/test/functional/test_runner.py --extended --coverage -x p2p_invalid_messages
-after_script:
-    - cd ${SRCDIR}
-    - git log -1
-    - cd ${BUILDDIR}
-    - $SHASUM ./src/*
+    #- git clone https://github.com/ElementsProject/lightning.git
+    - git clone --single-branch --branch macos https://github.com/arowser/lightning.git
 
 jobs:
  include:
- - os: osx
+     # - os: osx
+     #   osx_image: xcode11.2
+     #   install:
+     #      - HOMEBREW_NO_AUTO_UPDATE=1 brew install autoconf automake libtool python3 gmp gnu-sed gettext sqlite bitcoin
+     #      - ln -s /usr/local/Cellar/gettext/0.20.1/bin/xgettext /usr/local/opt
+     #      - export PATH="/usr/local/opt:$PATH"
+     #      - export LDFLAGS="-L/usr/local/opt/sqlite/lib" 
+     #      - export CPPFLAGS="-I/usr/local/opt/sqlite/include" 
+     #        #- wget https://bitcoincore.org/bin/bitcoin-core-0.18.1/bitcoin-0.18.1-osx.dmg
+     #        #- pyenv global 3.7.1 
+     #      - pip3 install mako
+     #   script:
+     #      - cd lightning
+     #      - ./configure --enable-developer && make -j
+     #      - make -j3 check
+ 
 
-
- - os: windows
-   env: >-
-    SHASUM=sha256sum
+ - os: linux
+   arch: arm64
+   dist: bionic
    install:
-    - choco install python3
-    - export PYTHON="C:\Python37\python"
-    - powershell "${PYTHON} --version"
-    - powershell 'C:\Python37\Scripts\pip install pyzmq'
-    - export PYTHONIOENCODING="UTF-8"
-    - export PYTHONUTF8=1
-   before_script:
-    - git clone https://github.com/bitcoin/bitcoin.git --depth 1
-    - cd bitcoin
-    - export SRCDIR=$(pwd)
-    - echo $SRCDIR
-    - cd ../
-    - powershell "${PYTHON} ./download_latest_nightly.py"
-    - cat ./src_dir.txt
-    - cat ./build_dir.txt
-    - export BUILDDIR=$(tail -1 ./build_dir.txt)
-    - echo $BUILDDIR
+      - sudo apt-get install -y libsqlite3-dev cppcheck valgrind gcc-4.8 gettext python3.7 python3-pip python3-mako libpq-dev python-dev
+   env:
+     - VALGRIND=0 ARCH=64 DEVELOPER=1 COMPILER=gcc TEST_GROUP=1 TEST_GROUP_COUNT=12 SOURCE_CHECK_ONLY=false
+   cache:
+     directories:
+       - dependencies
+       - external
    script:
-    - ${BUILDDIR}/src/test_bitcoin.exe
-    - powershell "${PYTHON} bitcoin/test/util/bitcoin-util-test.py -v"
-    - powershell "${PYTHON} bitcoin/test/functional/test_runner.py --extended --coverage -x feature_dbcrash"
+     .travis/build.sh 
+ 
+
+        # - os: windows
+        #   env: >-
+        #    SHASUM=sha256sum
+        #   install:
+        #    - choco install python3
+        #    - export PYTHON="C:\Python37\python"
+        #    - powershell "${PYTHON} --version"
+        #    - powershell 'C:\Python37\Scripts\pip install pyzmq'
+        #    - export PYTHONIOENCODING="UTF-8"
+        #    - export PYTHONUTF8=1
+        #   before_script:
+        #    - git clone https://github.com/bitcoin/bitcoin.git --depth 1
+        #    - cd bitcoin
+        #    - export SRCDIR=$(pwd)
+        #    - echo $SRCDIR
+        #    - cd ../
+        #    - powershell "${PYTHON} ./download_latest_nightly.py"
+        #    - cat ./src_dir.txt
+        #    - cat ./build_dir.txt
+        #    - export BUILDDIR=$(tail -1 ./build_dir.txt)
+        #    - echo $BUILDDIR
+        #   script:
+        #    - ${BUILDDIR}/src/test_bitcoin.exe
+        #    - powershell "${PYTHON} bitcoin/test/util/bitcoin-util-test.py -v"
+        #    - powershell "${PYTHON} bitcoin/test/functional/test_runner.py --extended --coverage -x feature_dbcrash"

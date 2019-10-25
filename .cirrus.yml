@@ -23,7 +23,7 @@ fedora_task:
   env:
       - SOURCE_CHECK_ONLY: false
   test_script:
-      - cd lightning && .travis/build_x86.sh 
+      - cd lightning && ../.travis/build_x86.sh 
 
         #nixos_task:
         #  name: nixos

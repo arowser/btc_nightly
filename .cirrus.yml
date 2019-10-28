@@ -1,7 +1,7 @@
 freebsd_task:
   name: freebsd
   freebsd_instance:
-     image_family: freebsd-12-0
+     image_family: freebsd-13-0-snap
      #freebsd-13-0-snap
      #freebsd-12-0
      #freebsd-11-3
@@ -19,11 +19,13 @@ fedora_task:
       - sudo dnf update -y && sudo dnf groupinstall -y 'C Development Tools and Libraries' 'Development Tools'
       - sudo dnf install -y clang gettext git gmp-devel libsq3-devel python3-devel python3-pip python3-setuptools net-tools valgrind wget zlib-devel libsodium-devel python3-mako postgresql-devel
       - sudo dnf clean all
-  clone_script: git clone https://github.com/ElementsProject/lightning.git
+  clone_script: 
+      - git clone https://github.com/ElementsProject/lightning.git
+      - git clone https://github.com/arowser/ln_nightly.git
   env:
       - SOURCE_CHECK_ONLY: false
   test_script:
-      - .travis/build_x86.sh 
+      - ln_nightly/.travis/build_x86.sh
 
         #nixos_task:
         #  name: nixos

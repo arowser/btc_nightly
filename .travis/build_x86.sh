@@ -1,6 +1,8 @@
 #!/bin/bash -x
 set -e
 
+cd lightning
+
 CWD=$(pwd)
 export SLOW_MACHINE=1
 export CC=${COMPILER:-gcc}

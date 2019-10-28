@@ -1,15 +1,15 @@
-#freebsd_task:
-#  name: freebsd
-#  freebsd_instance:
-#     image_family: freebsd-12-0
-#     #freebsd-13-0-snap
-#     #freebsd-12-0
-#     #freebsd-11-3
-#     #freebsd-11-2
-#     #freebsd-10-4
-#  install_script: pkg install -y autoconf automake gettext git gmp gmake libtool python python3 sqlite3 libsodium py36-mako bash bitcoin-daemon bitcoin-utils
-#  clone_script: git clone https://github.com/ElementsProject/lightning.git
-#  build_script: cd lightning && ./configure --enable-developer && gmake -j
+freebsd_task:
+  name: freebsd
+  freebsd_instance:
+     image_family: freebsd-12-0
+     #freebsd-13-0-snap
+     #freebsd-12-0
+     #freebsd-11-3
+     #freebsd-11-2
+     #freebsd-10-4
+  install_script: pkg install -y autoconf automake gettext git gmp gmake libtool python python3 sqlite3 libsodium py36-mako bash bitcoin-daemon bitcoin-utils
+  clone_script: git clone https://github.com/ElementsProject/lightning.git
+  build_script: cd lightning && ./configure --enable-developer && gmake -j
 
 fedora_task:
   name: fedora
@@ -23,7 +23,7 @@ fedora_task:
   env:
       - SOURCE_CHECK_ONLY: false
   test_script:
-      - cd lightning && ../.travis/build_x86.sh 
+      - .travis/build_x86.sh 
 
         #nixos_task:
         #  name: nixos

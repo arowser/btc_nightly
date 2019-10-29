@@ -8,7 +8,7 @@ freebsd_task:
      #freebsd-11-2
      #freebsd-10-4
   install_script: pkg install -y autoconf automake gettext git gmp gmake libtool python python3 sqlite3 libsodium py36-mako bash bitcoin-daemon bitcoin-utils
-  clone_script: git clone https://github.com/ElementsProject/lightning.git
+  clone_script: git clone --recursive https://github.com/ElementsProject/lightning.git
   build_script: cd lightning && ./configure --enable-developer && gmake -j
 
 fedora_task:

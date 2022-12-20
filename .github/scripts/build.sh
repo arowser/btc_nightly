@@ -98,5 +98,5 @@ then
 else
     eatmydata make -j32
     # shellcheck disable=SC2086
-    # eatmydata $TEST_CMD
+    eatmydata $TEST_CMD
 fi

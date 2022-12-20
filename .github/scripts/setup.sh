@@ -42,8 +42,7 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      python3-setuptools \
      qemu \
      qemu-system-mips \
-     qemu-system-powerpc \
-     qemu-system-riscv \
+     qemu-system-ppc \
      qemu-system-arm \
      qemu-user-static \
      shellcheck \

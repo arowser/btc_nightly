@@ -20,7 +20,7 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      gcc-aarch64-linux-gnu \
      gcc-arm-linux-gnueabihf \
      gcc-arm-none-eabi \
-     mips-linux-gnu \
+     gcc-mips-linux-gnu \
      gettext \
      git \
      libc6-dev-mips-cross \

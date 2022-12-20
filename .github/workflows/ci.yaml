@@ -24,6 +24,9 @@ jobs:
 
     steps:
       - name: Checkout
+        uses: actions/checkout@v2.0.0
+
+      - name: Checkout ln source
         run: git clone --progress https://github.com/ElementsProject/lightning.git
 
       - name: Set up Python 3.7
@@ -54,4 +57,5 @@ jobs:
           TEST_GROUP: ${{ matrix.TEST_GROUP }}
           TEST_DB_PROVIDER: ${{ matrix.DB }}
         run: |
-          bash -x .github/scripts/build.sh
+          cd lightning
+          bash -x ../.github/scripts/build.sh

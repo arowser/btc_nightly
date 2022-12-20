@@ -18,9 +18,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - CFG: "cross-mips32"
-            ARCH: mips32
-            TARGET_HOST: mips-linux-gnu
+            #- CFG: "cross-mips32"
+            #  ARCH: mips32
+            #  TARGET_HOST: mips-linux-gnu
+          - CFG: "cross-powerpc"
+            ARCH: powerpc
+            TARGET_HOST: powerpc-linux-gnu
+          - CFG: "cross-powerpc64"
+            ARCH: powerpc64
+            TARGET_HOST: powerpc64-linux-gnu
 
     steps:
       - name: Checkout

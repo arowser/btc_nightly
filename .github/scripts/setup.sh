@@ -21,9 +21,13 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      gcc-arm-linux-gnueabihf \
      gcc-arm-none-eabi \
      gcc-mips-linux-gnu \
+     gcc-powerpc-linux-gnu \
+     gcc-powerpc64-linux-gnu \
      gettext \
      git \
      libc6-dev-mips-cross \
+     libc6-dev-powerpc-cross \
+     libc6-dev-powerpc64-cross \
      libc6-dev-arm64-cross \
      libc6-dev-armhf-cross \
      libgmp-dev \

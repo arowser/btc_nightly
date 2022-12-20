@@ -27,7 +27,7 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      git \
      libc6-dev-mips-cross \
      libc6-dev-powerpc-cross \
-     libc6-dev-powerpc64-cross \
+     libc6-dev-powerpc-ppc64-cross \
      libc6-dev-arm64-cross \
      libc6-dev-armhf-cross \
      libgmp-dev \

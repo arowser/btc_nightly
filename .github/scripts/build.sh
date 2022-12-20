@@ -41,7 +41,7 @@ markers =
     slow_test: marks tests as slow (deselect with '-m "not slow_test"')
 EOF
 
-if [ "$TARGET_HOST" == "arm-linux-gnueabihf" ] || [ "$TARGET_HOST" == "aarch64-linux-gnu" ]
+if [ "$TARGET_HOST" == "arm-linux-gnueabihf" ] || [ "$TARGET_HOST" == "aarch64-linux-gnu" ] \
    || [ "$TARGET_HOST" == "mips-linux-gnu" ] || [ "$TARGET_HOST" == "aarch64-apple-darwin" ]
 then
     export QEMU_LD_PREFIX=/usr/"$TARGET_HOST"/

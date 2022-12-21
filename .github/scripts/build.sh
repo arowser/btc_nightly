@@ -82,17 +82,17 @@ then
     rm sqlite-src-3400000.zip
     rm -rf sqlite-src-3400000
 
-    wget -q https://gmplib.org/download/gmp/gmp-6.2.1.tar.xz
-    tar xf gmp-6.2.1.tar.xz
-    cd gmp-6.2.1 || exit 1
+    wget -q https://gmplib.org/download/gmp/gmp-6.1.2.tar.xz
+    tar xf gmp-6.1.2.tar.xz
+    cd gmp-6.1.2 || exit 1
     ./configure --prefix="$QEMU_LD_PREFIX" --host="$TARGET_HOST"
     make
     sudo make install
     cd ..
-    rm gmp-6.2.1.tar.xz
-    rm -rf gmp-6.2.1
+    rm gmp-6.1.2.tar.xz
+    rm -rf gmp-6.1.2
 
-    ./configure CC="$TARGET_HOST-gcc" CONFIGURATOR_CC="$TARGET_HOST-gcc -static" --enable-static --disable-rust
+    ./configure --prefix="$QEMU_LD_PREFIX" CC="$TARGET_HOST-gcc" --enable-static --disable-rust
 
     make -s -j32 CC="$TARGET_HOST-gcc"
 else

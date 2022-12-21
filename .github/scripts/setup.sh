@@ -51,6 +51,7 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      qemu-system-mips \
      qemu-system-ppc \
      qemu-system-arm \
+     qemu-system-misc \
      qemu-user-static \
      shellcheck \
      software-properties-common \

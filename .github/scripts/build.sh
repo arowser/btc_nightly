@@ -56,18 +56,18 @@ then
     export STRIP="$TARGET_HOST"-strip
     export CONFIGURATION_WRAPPER=qemu-"${TARGET_HOST%%-*}"-static
 
-    wget -q https://zlib.net/zlib-1.2.12.tar.gz
-    tar xf zlib-1.2.12.tar.gz
-    cd zlib-1.2.12 || exit 1
+    wget -q https://zlib.net/fossils/zlib-1.2.13.tar.gz
+    tar xf zlib-1.2.13.tar.gz
+    cd zlib-1.2.13 || exit 1
     ./configure --prefix="$QEMU_LD_PREFIX"
     make
     sudo make install
     cd .. || exit 1
-    rm zlib-1.2.12.tar.gz && rm -rf zlib-1.2.12
+    rm zlib-1.2.13.tar.gz && rm -rf zlib-1.2.13
 
-    wget -q https://www.sqlite.org/2018/sqlite-src-3260000.zip
-    unzip -q sqlite-src-3260000.zip
-    cd sqlite-src-3260000 || exit 1
+    wget -q https://www.sqlite.org/2018/sqlite-src-3400000.zip
+    unzip -q sqlite-src-3400000.zip
+    cd sqlite-src-3400000 || exit 1
     automake --add-missing --force-missing --copy || true
     ./configure --disable-tcl \
      --enable-static \
@@ -79,18 +79,18 @@ then
     make
     sudo make install
     cd .. || exit 1
-    rm sqlite-src-3260000.zip
-    rm -rf sqlite-src-3260000
+    rm sqlite-src-3400000.zip
+    rm -rf sqlite-src-3400000
 
-    wget -q https://gmplib.org/download/gmp/gmp-6.1.2.tar.xz
-    tar xf gmp-6.1.2.tar.xz
-    cd gmp-6.1.2 || exit 1
-    ./configure --disable-assembly --prefix="$QEMU_LD_PREFIX" --host="$TARGET_HOST"
+    wget -q https://gmplib.org/download/gmp/gmp-6.2.1.tar.xz
+    tar xf gmp-6.2.1.tar.xz
+    cd gmp-6.2.1 || exit 1
+    ./configure --prefix="$QEMU_LD_PREFIX" --host="$TARGET_HOST"
     make
     sudo make install
     cd ..
-    rm gmp-6.1.2.tar.xz
-    rm -rf gmp-6.1.2
+    rm gmp-6.2.1.tar.xz
+    rm -rf gmp-6.2.1
 
     ./configure CC="$TARGET_HOST-gcc" --enable-static
 

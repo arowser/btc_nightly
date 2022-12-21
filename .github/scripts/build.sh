@@ -55,8 +55,7 @@ then
     export CXX="$TARGET_HOST"-g++
     export LD="$TARGET_HOST"-ld
     export STRIP="$TARGET_HOST"-strip
-    export CONFIGURATION_WRAPPER=qemu-"${TARGET_HOST%%-*}"-static
-    export CONFIGURATION_CC="${TARGET_HOST%%-gcc} -static"
+    export CONFIGURATOR_WRAPPER=qemu-"${TARGET_HOST%%-*}"-static
 
     wget -q https://zlib.net/fossils/zlib-1.2.13.tar.gz
     tar xf zlib-1.2.13.tar.gz

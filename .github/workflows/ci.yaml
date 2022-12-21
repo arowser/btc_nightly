@@ -27,6 +27,9 @@ jobs:
           - CFG: "cross-powerpc64"
             ARCH: powerpc64
             TARGET_HOST: powerpc64-linux-gnu
+          - CFG: "cross-riscv64"
+            ARCH: riscv64
+            TARGET_HOST: riscv64-linux-gnu
 
     steps:
       - name: Checkout

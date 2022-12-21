@@ -23,13 +23,15 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      gcc-mips-linux-gnu \
      gcc-powerpc-linux-gnu \
      gcc-powerpc64-linux-gnu \
+     gcc-riscv64-linux-gnu \
      gettext \
      git \
+     libc6-dev-arm64-cross \
+     libc6-dev-armhf-cross \
      libc6-dev-mips-cross \
      libc6-dev-powerpc-cross \
      libc6-dev-powerpc-ppc64-cross \
-     libc6-dev-arm64-cross \
-     libc6-dev-armhf-cross \
+     libc6-dev-riscv64-cross \
      libgmp-dev \
      libpq-dev \
      libprotobuf-c-dev \

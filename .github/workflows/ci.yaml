@@ -55,6 +55,7 @@ jobs:
           EXPERIMENTAL_DUAL_FUND: ${{ matrix.EXPERIMENTAL_DUAL_FUND }}
           COMPILER: ${{ matrix.COMPILER }}
           ARCH: ${{ matrix.ARCH }}
+          TARGET_HOST: ${{ matrix.TARGET_HOST }} 
           COMPAT: ${{ matrix.COMPAT }}
           FUZZING: ${{ matrix.FUZZING }}
           PYTEST_PAR: ${{ matrix.PYTEST_PAR }}

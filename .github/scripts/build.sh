@@ -56,6 +56,7 @@ then
     export LD="$TARGET_HOST"-ld
     export STRIP="$TARGET_HOST"-strip
     export CONFIGURATION_WRAPPER=qemu-"${TARGET_HOST%%-*}"-static
+    export CONFIGURATION_CC="${TARGET_HOST%%-gcc} -static"
 
     wget -q https://zlib.net/fossils/zlib-1.2.13.tar.gz
     tar xf zlib-1.2.13.tar.gz
@@ -86,7 +87,7 @@ then
     wget -q https://gmplib.org/download/gmp/gmp-6.2.1.tar.xz
     tar xf gmp-6.2.1.tar.xz
     cd gmp-6.2.1 || exit 1
-    ./configure --prefix="$QEMU_LD_PREFIX" --host="$TARGET_HOST"
+    ./configure --prefix="$QEMU_LD_PREFIX" --host="$TARGET_HOST" CONFIGURATOR_CC="$TARGET_HOST-gcc -static"
     make
     sudo make install
     cd ..

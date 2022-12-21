@@ -66,7 +66,7 @@ then
     cd .. || exit 1
     rm zlib-1.2.13.tar.gz && rm -rf zlib-1.2.13
 
-    wget -q https://www.sqlite.org/2018/sqlite-src-3400000.zip
+    wget -q https://www.sqlite.org/2022/sqlite-src-3400000.zip
     unzip -q sqlite-src-3400000.zip
     cd sqlite-src-3400000 || exit 1
     automake --add-missing --force-missing --copy || true

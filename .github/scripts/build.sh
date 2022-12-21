@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 echo "Running in $(pwd)"
-export ARCH=${ARCH:-64}
 export BOLTDIR=bolts
 export CC=${COMPILER:-gcc}
 export COMPAT=${COMPAT:-1}
@@ -55,7 +54,7 @@ then
     export CXX="$TARGET_HOST"-g++
     export LD="$TARGET_HOST"-ld
     export STRIP="$TARGET_HOST"-strip
-    export CONFIGURATOR_WRAPPER=qemu-"${TARGET_HOST%%-*}"-static
+    export CONFIGURATOR_WRAPPER=qemu-"${ARCH}"-static
 
     wget -q https://zlib.net/fossils/zlib-1.2.13.tar.gz
     tar xf zlib-1.2.13.tar.gz

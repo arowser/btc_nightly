@@ -96,6 +96,7 @@ then
     ./configure CC="$TARGET_HOST-gcc" --enable-static --disable-rust
 
     make -s -i -j32 CC="$TARGET_HOST-gcc"
+	make -i check VALGRIND=0 PYTEST_PAR=$PYTEST_PAR DEVELOPER=0 TIMEOUT=300
 else
     eatmydata make -j32
     # shellcheck disable=SC2086

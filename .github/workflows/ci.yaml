@@ -17,6 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        include:
           - CFG: "cross-arm32"
             ARCH: arm
             TARGET_HOST: arm-linux-gnueabihf

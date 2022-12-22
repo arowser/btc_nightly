@@ -26,16 +26,6 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      gcc-riscv64-linux-gnu \
      gettext \
      git \
-     libc6-dev-arm64-cross \
-     libc6-dev-armhf-cross \
-     libc6-mips-cross \
-     libc6-dev-mips-cross \
-     libc6-powerpc-cross \
-     libc6-dev-powerpc-cross \
-     libc6-powerpc-ppc64-cross \
-     libc6-dev-powerpc-ppc64-cross \
-     libc6-riscv64-cross \
-     libc6-dev-riscv64-cross \
      libgmp-dev \
      libpython3-dev \
      libpq-dev \
@@ -51,8 +41,6 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      python3-dev \
      python3-pip \
      python3-setuptools \
-     qemu \
-     qemu-system \
      qemu-user-static \
      shellcheck \
      software-properties-common \

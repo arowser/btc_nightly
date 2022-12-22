@@ -46,6 +46,7 @@ if [ "$TARGET_HOST" == "arm-linux-gnueabihf" ] || [ "$TARGET_HOST" == "aarch64-l
    || [ "$TARGET_HOST" == "riscv64-linux-gnu" ]
 then
     export QEMU_LD_PREFIX=/usr/"$TARGET_HOST"/
+	export LD_LIBRARY_PATH=/usr/"$TARGET_HOST"/lib 
     export MAKE_HOST="$TARGET_HOST"
     export BUILD=x86_64-pc-linux-gnu
     export AR="$TARGET_HOST"-ar
@@ -92,9 +93,9 @@ then
     rm gmp-6.1.2.tar.xz
     rm -rf gmp-6.1.2
 
-    ./configure --prefix="$QEMU_LD_PREFIX" CC="$TARGET_HOST-gcc" --enable-static --disable-rust
+    ./configure CC="$TARGET_HOST-gcc" --enable-static --disable-rust
 
-    make -s -j32 CC="$TARGET_HOST-gcc"
+    make -s -i -j32 CC="$TARGET_HOST-gcc"
 else
     eatmydata make -j32
     # shellcheck disable=SC2086

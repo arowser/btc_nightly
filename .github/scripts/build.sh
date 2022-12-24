@@ -40,11 +40,11 @@ markers =
     slow_test: marks tests as slow (deselect with '-m "not slow_test"')
 EOF
 
-if [ "$TARGET_HOST" == "arm-linux-gnueabihf" ] || [ "$TARGET_HOST" == "aarch64-linux-gnu" ] \
-   || [ "$TARGET_HOST" == "mips-linux-gnu" ] || [ "$TARGET_HOST" == "aarch64-apple-darwin" ] \
-   || [ "$TARGET_HOST" == "powerpc-linux-gnu" ] || [ "$TARGET_HOST" == "powerpc64-linux-gnu" ] \
-   || [ "$TARGET_HOST" == "riscv64-linux-gnu" ]
-then
+#if [ "$TARGET_HOST" == "arm-linux-gnueabihf" ] || [ "$TARGET_HOST" == "aarch64-linux-gnu" ] \
+#   || [ "$TARGET_HOST" == "mips-linux-gnu" ] || [ "$TARGET_HOST" == "aarch64-apple-darwin" ] \
+#   || [ "$TARGET_HOST" == "powerpc-linux-gnu" ] || [ "$TARGET_HOST" == "powerpc64-linux-gnu" ] \
+#   || [ "$TARGET_HOST" == "riscv64-linux-gnu" ]
+#then
     export QEMU_LD_PREFIX=/usr/"$TARGET_HOST"/
 	export LD_LIBRARY_PATH=/usr/"$TARGET_HOST"/lib 
     export MAKE_HOST="$TARGET_HOST"
@@ -97,8 +97,8 @@ then
 
     make -s -i -j32 CC="$TARGET_HOST-gcc"
 	make -i check VALGRIND=0 PYTEST_PAR=$PYTEST_PAR DEVELOPER=0 TIMEOUT=300
-else
-    eatmydata make -j32
-    # shellcheck disable=SC2086
-    eatmydata $TEST_CMD
-fi
+#else
+#    eatmydata make -j32
+#    # shellcheck disable=SC2086
+#    eatmydata $TEST_CMD
+#fi

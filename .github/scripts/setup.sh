@@ -17,28 +17,27 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      cppcheck \
      docbook-xml \
      eatmydata \
-     gcc-aarch64-linux-gnu \
+     gcc-i686-linux-gnu \
+	 gcc-s390x-linux-gnu \
      gcc-arm-linux-gnueabihf \
-     gcc-arm-none-eabi \
+     gcc-aarch64-linux-gnu \
      gcc-mips-linux-gnu \
+     gcc-mips64-linux-gnuabi64 \
      gcc-powerpc-linux-gnu \
      gcc-powerpc64-linux-gnu \
      gcc-riscv64-linux-gnu \
      gettext \
      git \
-     libc6-armhf-cross \
+	 libc6-dev-i386-cross \
+	 libc6-dev-s390x-cross \
+	 libc6-dev-mips64-cross \
      libc6-dev-armhf-cross \
-     libc6-arm64-cross \
      libc6-dev-arm64-cross \
-     libc6-mips-cross \
      libc6-dev-mips-cross \
-     libc6-powerpc-cross \
+     libc6-dev-mips64-cross \
      libc6-dev-powerpc-cross \
-     libc6-powerpc-ppc64-cross \
-     libc6-dev-powerpc-ppc64-cross \
-     libc6-riscv64-cross \
+     libc6-dev-ppc64-cross \
      libc6-dev-riscv64-cross \
-	 libstdc++6-mips-cross \
      libgmp-dev \
      libpython3-dev \
      libpq-dev \

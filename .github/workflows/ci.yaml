@@ -1,10 +1,8 @@
 ---
 name: Continuous Integration
 on:
-  push:
-    branches:
-      - "master"
-  pull_request:
+  schedule:
+    - cron: "5 * * * *"
 jobs:
   normal-build:
     name: Normal Test Config ${{ matrix.cfg }}
@@ -27,24 +25,24 @@ jobs:
             - CFG: "cross-mips64"
               ARCH: mips64
               TARGET_HOST: mips64-linux-gnuabi64
-              #- CFG: "cross-arm32v7"
-              #  ARCH: arm
-              #  TARGET_HOST: arm-linux-gnueabihf
-              #- CFG: "cross-arm64"
-              #  ARCH: aarch64
-              #  TARGET_HOST: aarch64-linux-gnu
-              #- CFG: "cross-mips32"
-              #  ARCH: mips
-              #  TARGET_HOST: mips-linux-gnu
-              #- CFG: "cross-powerpc"
-              #  ARCH: ppc
-              #  TARGET_HOST: powerpc-linux-gnu
-              #- CFG: "cross-powerpc64"
-              #  ARCH: ppc64
-              #  TARGET_HOST: powerpc64-linux-gnu
-              #- CFG: "cross-riscv64"
-              #  ARCH: riscv64
-              #  TARGET_HOST: riscv64-linux-gnu
+            - CFG: "cross-arm32v7"
+              ARCH: arm
+              TARGET_HOST: arm-linux-gnueabihf
+            - CFG: "cross-arm64"
+              ARCH: aarch64
+              TARGET_HOST: aarch64-linux-gnu
+            - CFG: "cross-mips32"
+              ARCH: mips
+              TARGET_HOST: mips-linux-gnu
+            - CFG: "cross-powerpc"
+              ARCH: ppc
+              TARGET_HOST: powerpc-linux-gnu
+            - CFG: "cross-powerpc64"
+              ARCH: ppc64
+              TARGET_HOST: powerpc64-linux-gnu
+            - CFG: "cross-riscv64"
+              ARCH: riscv64
+              TARGET_HOST: riscv64-linux-gnu
 
     steps:
       - name: Checkout

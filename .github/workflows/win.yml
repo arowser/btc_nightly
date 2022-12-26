@@ -6,7 +6,7 @@ on:
       - "master"
 jobs:
   smoke-test:
-    name: Smoke Test macOS M1
+    name: Smoke Test Win
     runs-on: windows-latest
     defaults:
       run:
@@ -19,8 +19,16 @@ jobs:
       with:
         msystem: MINGW64
         update: true
-        install: base-devel autoconf automake libtool mingw-w64-x86_64-toolchain mingw-w64-x86_64-python3 mingw-w64-x86_64-python3-pip mingw-w64-x86_64-zlib msys2-runtime-devel
+        install: git base-devel autoconf automake libtool mingw-w64-x86_64-toolchain mingw-w64-x86_64-python3 mingw-w64-x86_64-python3-pip mingw-w64-x86_64-zlib msys2-runtime-devel mingw-w64-x86_64-gmp mingw-w64-x86_64-python-poetry mingw-w64-x86_64-python3-cffi mingw-w64-x86_64-sqlite3 mingw-w64-x86_64-python3-cryptography mingw-w64-x86_64-python3-mako mingw-w64-x86_64-libsodium mingw-w64-x86_64-gettext
+    - name: Checkout cln source
+      run: git clone --progress https://github.com/ElementsProject/lightning.git
     - name: Build 
       run: |
         cd lightning
-        bash -x ../.github/scripts/build.sh
+        #echo "C:\Users\runneradmin\.local\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        #echo "C:\Users\runneradmin\.local\bin" >> $GITHUB_PATH
+        poetry config virtualenvs.create false --local
+        #poetry install
+        ./configure --enable-static --disable-rust
+        make -j
+ 

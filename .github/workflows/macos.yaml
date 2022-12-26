@@ -1,13 +1,15 @@
 ---
 name: Mac OS M1 pytest
 on:
-  push:
-    branches:
-      - "master"
+  #push:
+  #  branches:
+  #    - "master"
+  schedule:
+    - cron: "5 * * * *"
 jobs:
   smoke-test:
     name: Smoke Test macOS M1
-    runs-on: macOS aarch64
+    runs-on: macOS
     env:
       DEVELOPER: 1
       VALGRIND: 0

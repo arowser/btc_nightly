@@ -41,8 +41,9 @@ markers =
 EOF
 
 if [ "$TARGET_HOST" == "arm-linux-gnueabihf" ] || [ "$TARGET_HOST" == "aarch64-linux-gnu" ] \
-   || [ "$TARGET_HOST" == "mips-linux-gnu" ] || [ "$TARGET_HOST" == "aarch64-apple-darwin" ] \
+   || [ "$TARGET_HOST" == "mips-linux-gnu" ] || [ "$TARGET_HOST" == "mips64-linux-gnuabi64" ] \
    || [ "$TARGET_HOST" == "powerpc-linux-gnu" ] || [ "$TARGET_HOST" == "powerpc64-linux-gnu" ] \
+   || [ "$TARGET_HOST" == "s390x-linux-gnu" ] || [ "$TARGET_HOST" == "i686-linux-gnu" ] \
    || [ "$TARGET_HOST" == "riscv64-linux-gnu" ]
 then
     export QEMU_LD_PREFIX=/usr/"$TARGET_HOST"/

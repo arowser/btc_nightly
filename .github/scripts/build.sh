@@ -23,9 +23,9 @@ export LIGHTNINGD_POSTGRES_NO_VACUUM=1
 # Fail if any commands fail.
 set -e
 
-pip3 install --user poetry
-poetry config virtualenvs.create false --local
-poetry install
+pip3 install --user pip wheel poetry
+poetry export -o /tmp/requirements.txt --without-hashes --with dev
+pip install -r /tmp/requirements.txt
 
 git clone https://github.com/lightning/bolts.git ../${BOLTDIR}
 git submodule update --init --recursive

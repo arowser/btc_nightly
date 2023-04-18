@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: "0 1 * * *"
   pull_request:
+  push:
 jobs:
   normal-build:
     name: ${{ matrix.cfg }}
@@ -17,34 +18,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-            - CFG: "cross-s390x"
-              ARCH: s390x
-              TARGET_HOST: s390x-linux-gnu
-            - CFG: "cross-i386"
-              ARCH: i386
-              TARGET_HOST: i686-linux-gnu
-            - CFG: "cross-mips64"
-              ARCH: mips64
-              TARGET_HOST: mips64-linux-gnuabi64
-            - CFG: "cross-arm32v7"
-              ARCH: arm
-              TARGET_HOST: arm-linux-gnueabihf
             - CFG: "cross-arm64"
               ARCH: aarch64
               TARGET_HOST: aarch64-linux-gnu
-            - CFG: "cross-mips32"
-              ARCH: mips
-              TARGET_HOST: mips-linux-gnu
-            - CFG: "cross-powerpc"
-              ARCH: ppc
-              TARGET_HOST: powerpc-linux-gnu
-            - CFG: "cross-powerpc64"
-              ARCH: ppc64
-              TARGET_HOST: powerpc64-linux-gnu
-            - CFG: "cross-riscv64"
-              ARCH: riscv64
-              TARGET_HOST: riscv64-linux-gnu
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2.0.0

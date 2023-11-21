@@ -38,7 +38,6 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      libc6-dev-powerpc-cross \
      libc6-dev-ppc64-cross \
      libc6-dev-riscv64-cross \
-     libgmp-dev \
      libpython3-dev \
      libpq-dev \
      libprotobuf-c-dev \

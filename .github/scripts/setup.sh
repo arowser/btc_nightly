@@ -58,7 +58,6 @@ sudo apt-get -qq install --no-install-recommends --allow-unauthenticated -yy \
      sudo \
      tcl \
      unzip \
-     valgrind \
      wget \
      xsltproc \
      zlib1g-dev
